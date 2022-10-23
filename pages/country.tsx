@@ -63,7 +63,12 @@ export default function Country({ country }: any) {
       <section className="flex gap-x-10 my-6 w-[97%] md:w-[95%] mx-auto flex-col md:flex-row items-center">
         {/* Country Flag  */}
         <div className="w-[90%] md:w-1/2 relative h-96">
-          <Image src={country.flags.png} layout="fill" objectFit="contain" />
+          <Image
+            src={country.flags.png}
+            layout="fill"
+            objectFit="contain"
+            alt={country?.name.common}
+          />
         </div>
 
         {/* Country Description  */}
@@ -124,6 +129,7 @@ export default function Country({ country }: any) {
                       query: { name: item?.name.common },
                     })
                   }
+                  key={item?.name.common}
                   className="bg-white cursor-pointer hover:scale-105 transition ease-in-out dark:bg-darkBlue-el mr-2 rounded-md shadow-md py-1 px-2"
                 >
                   {item?.name.common}

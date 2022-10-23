@@ -24,7 +24,7 @@ const CountryCard: FC<Props> = ({
       className="w-full bg-white cursor-pointer rounded-md shadow-md hover:scale-105 transition ease-out dark:bg-darkBlue-el"
     >
       <div className="relative h-56 w-full">
-        <Image src={flag} layout="fill" />
+        <Image src={flag} layout="fill" alt={name}/>
       </div>
       <div className="w-[95%] mx-auto my-4">
         <h5 className="font-semibold text-xl">{name}</h5>

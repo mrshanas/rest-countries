@@ -55,7 +55,7 @@ Users should be able to:
 
 Accessing values on a dynamic object properties and values coming from the API server using the code below
 
-```ts
+```js
 Object.keys(object);
 Object.values(object);
 ```
