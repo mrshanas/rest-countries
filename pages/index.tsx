@@ -5,6 +5,8 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 
+import { CountryCard } from "../components";
+
 export const getStaticProps: GetStaticProps = async () => {
   const continents: string[] = [
     "Africa",
@@ -70,6 +72,34 @@ const Home: NextPage = ({ continents }: any) => {
           </Menu>
         </div>
       </div>
+
+      {/* Countries  */}
+      <section className="grid md:grid-cols-3 gap-x-4 gap-y-5 w-[95%] mx-auto my-8">
+        <CountryCard
+          name="Tanzania"
+          capital="Dodoma"
+          continent="Africa"
+          population={45000000}
+        />
+        <CountryCard
+          name="Tanzania"
+          capital="Dodoma"
+          continent="Africa"
+          population={45000000}
+        />{" "}
+        <CountryCard
+          name="Tanzania"
+          capital="Dodoma"
+          continent="Africa"
+          population={45000000}
+        />{" "}
+        <CountryCard
+          name="Tanzania"
+          capital="Dodoma"
+          continent="Africa"
+          population={45000000}
+        />
+      </section>
     </main>
   );
 };
