@@ -66,7 +66,7 @@ const Home: NextPage = () => {
       {/* Search && Filter Bar  */}
       <div className="flex flex-col md:flex-row gap-y-3 w-[99%] md:w-[90%] mx-auto items-center justify-between my-4">
         {/* Search Bar  */}
-        <div className="flex w-[95%] md:w-1/3 cursor-pointer items-center rounded-md hover:scale-105 transition ease-out gap-x-3 bg-white shadow-md dark:bg-darkBlue-el px-4 py-3 ">
+        <div className="flex w-[95%] md:w-1/3 cursor-pointer items-center rounded-md gap-x-3 bg-white shadow-md dark:bg-darkBlue-el px-4 py-3 ">
           <MagnifyingGlassIcon className="h-5" />
           <input
             type="search"
@@ -80,7 +80,7 @@ const Home: NextPage = () => {
         {/* Filter by Continent Dropdown */}
         <div className="self-start ml-3 md:ml-0">
           <Menu as="div" className="relative">
-            <Menu.Button className="inline-flex hover:scale-105 transition ease-out items-center cursor-pointer py-3 px-4 bg-white dark:bg-darkBlue-el rounded-md shadow-md">
+            <Menu.Button className="inline-flex items-center cursor-pointer py-3 px-4 bg-white dark:bg-darkBlue-el rounded-md shadow-md">
               <p className="text-sm">Filter by Region</p>{" "}
               <ChevronDownIcon className="ml-2 h-6" aria-hidden />
             </Menu.Button>

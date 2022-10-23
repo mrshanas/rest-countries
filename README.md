@@ -1,41 +1,72 @@
-# Front-end Style Guide
+# Frontend Mentor - REST Countries API with color theme switcher solution
 
-## Layout
+This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-The designs were created to the following widths:
+## Table of contents
 
-- Mobile: 375px
-- Desktop: 1440px
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
 
-## Colors
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
 
-### Neutral
+  - [Useful resources](#useful-resources)
 
-- Dark Blue (Dark Mode Elements): hsl(209, 23%, 22%)
-- Very Dark Blue (Dark Mode Background): hsl(207, 26%, 17%)
-- Very Dark Blue (Light Mode Text): hsl(200, 15%, 8%)
-- Dark Gray (Light Mode Input): hsl(0, 0%, 52%)
-- Very Light Gray (Light Mode Background): hsl(0, 0%, 98%)
-- White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%)
+- [Author](#author)
 
-## Typography
+## Overview
 
-### Body Copy
+### The challenge
 
-- Homepage Items: 14px
-- Detail Page: 16px
+Users should be able to:
 
-### Fonts
+- See all countries from the API on the homepage
+- Search for a country using an `input` field
+- Filter countries by region
+- Click on a country to see more detailed information on a separate page
+- Click through to the border countries on the detail page
+- Toggle the color scheme between light and dark mode _(optional)_
 
-- Family: [Nunito Sans](https://fonts.google.com/specimen/Nunito+Sans)
-- Weights: 300, 600, 800
+### Screenshot
 
-## Icons
+![](./assets/rest-contries.png)
 
-For the icons, you can use a font icon library. Don't worry if the icons that you choose don't look exactly like they do on the design.
+### Links
 
-Some suggestions can be found below:
+- Solution URL: [rest-countries](https://github.com/mrshanas/rest-countries)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-- [Font Awesome](https://fontawesome.com)
-- [IcoMoon](https://icomoon.io)
-- [Ionicons](https://ionicons.com)
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- [React](https://reactjs.org/) - JS library
+- [Next.js](https://nextjs.org/) - React framework
+- [Tailwind](https://tailwindcss.com/) - For styles
+
+### What I learned
+
+Accessing values on a dynamic object properties and values coming from the API server using the code below
+
+```ts
+Object.keys(object);
+Object.values(object);
+```
+
+### Useful resources
+
+- [NextJs Docs](https://nextjs.org)
+- [TailwindCss Docs](https://tailwindcss.com)
+
+## Author
+
+- Website - [mrshanas.com](https://mrshanas.com)
+- Frontend Mentor - [@mrshanas](https://www.frontendmentor.io/profile/mrshanas)
+- Twitter - [@mrshanas](https://www.twitter.com/mrshanas)
