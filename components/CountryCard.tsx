@@ -1,23 +1,32 @@
 import { FC } from "react";
 import Image from "next/image";
 
-import im from "../assets/vercel.svg";
-
 type Props = {
   capital: string;
   continent: string;
-  flag?: string;
+  flag: string;
   name: string;
+  onClick: () => void;
   population: number;
 };
 
-const CountryCard: FC<Props> = ({ capital, continent, name, population }) => {
+const CountryCard: FC<Props> = ({
+  capital,
+  continent,
+  flag,
+  name,
+  onClick,
+  population,
+}) => {
   return (
-    <div className="w-full bg-white cursor-pointer rounded-md shadow-md hover:scale-105 transition ease-out dark:bg-darkBlue-el">
-      <div className="relative h-20">
-        <Image src={im} layout="fill" />
+    <div
+      onClick={onClick}
+      className="w-full bg-white cursor-pointer rounded-md shadow-md hover:scale-105 transition ease-out dark:bg-darkBlue-el"
+    >
+      <div className="relative h-56 w-full">
+        <Image src={flag} layout="fill" />
       </div>
-      <div className="w-[95%] mx-auto my-3">
+      <div className="w-[95%] mx-auto my-4">
         <h5 className="font-semibold text-xl">{name}</h5>
         <p>
           Population: <small>{population}</small>

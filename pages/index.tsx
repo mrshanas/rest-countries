@@ -1,33 +1,64 @@
-import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import type { GetStaticProps, NextPage } from "next";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import { ChangeEvent, Fragment, useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 import { CountryCard } from "../components";
 
-export const getStaticProps: GetStaticProps = async () => {
-  const continents: string[] = [
-    "Africa",
-    "Asia",
-    "Australia",
-    "Europe",
-    "North America",
-    "Oceania",
-    "South America",
-  ];
+const baseUrl = "https://restcountries.com/v3.1";
 
+export const getStaticProps: GetStaticProps = async () => {
   return {
-    props: {
-      continents,
-    },
+    props: {},
   };
 };
 
-const Home: NextPage = ({ continents }: any) => {
+const Home: NextPage = () => {
+  const [search, setSearch] = useState("");
+  const [countries, setCountries] = useState([]);
+  const router = useRouter();
+  const regions: string[] = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
+
+  useEffect(() => {
+    fetchCountries();
+  }, []);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+
+    searchCountries(search);
+  };
+
+  const fetchCountries = async () => {
+    const res = await fetch(`${baseUrl}/all`);
+    const data = await res.json();
+
+    if (res.ok) setCountries(data);
+    else setCountries([]);
+  };
+
+  const searchCountries = async (name: string) => {
+    if (!search) return fetchCountries();
+
+    const res = await fetch(`${baseUrl}/name/${name}`);
+    const data = await res.json();
+
+    if (res.ok) setCountries(data);
+  };
+
+  const filterCountries = (region: string) => {
+    const filteredCountries = countries.filter(
+      (country: any) => country?.region == region
+    );
+
+    setCountries(filteredCountries);
+  };
+
   return (
-    <main className="">
+    <main>
       <Head>
         <title>REST Countries</title>
       </Head>
@@ -39,6 +70,8 @@ const Home: NextPage = ({ continents }: any) => {
           <MagnifyingGlassIcon className="h-5" />
           <input
             type="search"
+            onChange={handleChange}
+            value={search}
             placeholder="Search for a country..."
             className="outline-none w-full h-full border-none flex-grow bg-inherit"
           />
@@ -48,7 +81,7 @@ const Home: NextPage = ({ continents }: any) => {
         <div className="self-start ml-3 md:ml-0">
           <Menu as="div" className="relative">
             <Menu.Button className="inline-flex hover:scale-105 transition ease-out items-center cursor-pointer py-3 px-4 bg-white dark:bg-darkBlue-el rounded-md shadow-md">
-              <p className="text-sm">Filter by Continent</p>{" "}
+              <p className="text-sm">Filter by Region</p>{" "}
               <ChevronDownIcon className="ml-2 h-6" aria-hidden />
             </Menu.Button>
 
@@ -62,9 +95,14 @@ const Home: NextPage = ({ continents }: any) => {
               leaveTo="transform opacity-0 scale-95"
             >
               <Menu.Items className="absolute right-0 mt-2 z-10 w-full bg-white dark:bg-darkBlue-el shadow-md rounded-md p-2">
-                {continents.map((item: string) => (
+                {regions.map((item: string) => (
                   <Menu.Item key={item}>
-                    <button className="block my-2">{item}</button>
+                    <button
+                      onClick={() => filterCountries(item)}
+                      className="block my-2"
+                    >
+                      {item}
+                    </button>
                   </Menu.Item>
                 ))}
               </Menu.Items>
@@ -75,30 +113,25 @@ const Home: NextPage = ({ continents }: any) => {
 
       {/* Countries  */}
       <section className="grid md:grid-cols-3 gap-x-4 gap-y-5 w-[95%] mx-auto my-8">
-        <CountryCard
-          name="Tanzania"
-          capital="Dodoma"
-          continent="Africa"
-          population={45000000}
-        />
-        <CountryCard
-          name="Tanzania"
-          capital="Dodoma"
-          continent="Africa"
-          population={45000000}
-        />{" "}
-        <CountryCard
-          name="Tanzania"
-          capital="Dodoma"
-          continent="Africa"
-          population={45000000}
-        />{" "}
-        <CountryCard
-          name="Tanzania"
-          capital="Dodoma"
-          continent="Africa"
-          population={45000000}
-        />
+        {countries &&
+          countries.map((country: any) => (
+            <CountryCard
+              onClick={() => {
+                router.push({
+                  pathname: "/country",
+                  query: { name: country?.name.common },
+                });
+              }}
+              flag={country?.flags.png}
+              population={country?.population}
+              name={country?.name.common}
+              continent={country.region}
+              capital={country?.capital}
+              key={country?.name.common}
+            />
+          ))}
+
+        {!countries && <p>No countries were found</p>}
       </section>
     </main>
   );
