@@ -37,7 +37,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [rest-countries](https://github.com/mrshanas/rest-countries)
-- Live Site URL: [rest-countries](https://rest-countries-vtkm.vercel.app/)
+- Live Site URL: [rest-countries](https://rest-countries.mrshanas.me/)
 
 ## My process
 
@@ -47,7 +47,7 @@ Users should be able to:
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
+- [React](https://react.dev/) - JS library
 - [Next.js](https://nextjs.org/) - React framework
 - [Tailwind](https://tailwindcss.com/) - For styles
 
@@ -67,6 +67,6 @@ Object.values(object);
 
 ## Author
 
-- Website - [mrshanas.com](https://mrshanas.com)
+- Website - [scribbles.mrshanas.me](https://scribbles.mrshanas.me)
 - Frontend Mentor - [@mrshanas](https://www.frontendmentor.io/profile/mrshanas)
 - Twitter - [@mrshanas](https://www.twitter.com/mrshanas)
